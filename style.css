@@ -1,0 +1,36 @@
+body {
+	font-family: Lobster;
+	background-color: lightpink;
+}
+
+h1 {
+	color: white;
+	text-align: center;
+	font-size: 25px;
+}
+
+#another_h1{
+	font-family: "Comic Sans MS";
+}
+
+#another_h1:hover {
+	color: yellow;
+	transform: translateY(2px);
+}
+
+#thisisadiv {
+	background-color: red;
+	height: 100px;
+	width: 100px;
+}
+
+#kappa:hover  {
+	transform: rotate(180deg);
+}
+
+.blog {
+	height: 20%;
+	width: 20%;
+	float:right;
+	background-color: lightblue;
+}
