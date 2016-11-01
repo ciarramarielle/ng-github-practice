@@ -4,15 +4,22 @@
 <!-- Description:home page      -->
 <!-- Author:    Ciarra Altoveros-->
 
-<html ng-app>
+<html ng-app="AngularJSPractice">
 <head>
 	<title>AngularJS Practice</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+	<!-- JS: link to AngularJS CDN -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	
+	<!-- JS: link to my own script.js -->
+	<script type="text/javascript" src="script.js"></script>
+
 </head>
 
-<body>
-	Hello world.
-	<p>Testing if AngularJS is linked properly...
-	Should evaluate this equation {{4/2}}</p>
+<body ng-controller="MainController">
+	<h1>{{message}}</h1>
+	<p>{{message.length}}</p>
 </body>
-													</html>
+
+
+</html>
