@@ -8,18 +8,72 @@
 <head>
 	<title>AngularJS Practice</title>
 
+	<!-- JS: link to AngularJS (local)-->
+	<script type="text/javascript" src="js\angular.min.js"></script>
 	<!-- JS: link to AngularJS CDN -->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>-->
 	
-	<!-- JS: link to my own script.js -->
-	<script type="text/javascript" src="script.js"></script>
-
+	<!-- JS: links to my own CONTROLLER.js scripts -->
+	<!--<script type="text/javascript" src="script.js"></script>-->
+	<script type="text/javascript" src="MainController.js"></script>
 </head>
 
-<body ng-controller="MainController">
+<body ng-controller="MainController"><!-- ng-controller="MainController-->
 	<h1>{{message}}</h1>
-	<p>{{message.length}}</p>
+
+	<form name="searchUser" ng-submit="search(username)">
+		<input required type="search" placeholder="Username to find..." ng-model="username"/>
+		<input type="submit" value="Search"  />
+		<!-- to require it, cant ng-click-->
+	</form>
+
+	<p> {{error}} </p>
+	<!--Getting errors on Chrome/Firefox with ng-include without httpserver soo.. -->
+	<!--<div ng-include="'userDetails.html'" ng-show="user"></div>-->
+	
+	{{ countdown }}
+	<div ng-show="user"> 
+		<h2>{{ user.name }}</h2>
+		<img ng-src="{{user.avatar_url}}" title="{{user.name}}" />
+		
+		<!-- for user to select what they want to sort on -->
+		<br />
+		<select ng-model="repoSortOrder">
+			<option value="+name">Name</option>
+			<option value="-stargazers_count">Stars</option>
+			<option value="+language">Language</option>
+		</select>	
+	</div>
+
+	<table ng-show="user"> <!-- one row for each repo, each repo will have multiple data -->
+		<thead>
+			<th>Name</th>
+			<th>Stars</th>
+			<th>Language</th>
+		</thead>
+		<tbody><!-- one tr for each repo in $scope.repos -->
+			<tr ng-repeat="repo in repos | orderBy:repoSortOrder">
+				<td>{{ repo.name }}</td>
+				<td>{{ repo.stargazers_count | number }}</td>
+				<td>{{ repo.language }}</td>
+			</tr>
+		</tbody>
+	</table>
 </body>
 
 
 </html>
+
+
+<!--
+	<p>First name: {{person.firstName}}</p>
+	<p>Last name: {{person.lastName}}</p>
+	<img src="{{person.imageSrc}}" title="{{person.firstName}} {{person.lastName}}" alt = "{{person.firstName}} {{person.lastName}}" />
+
+		<div>
+		{{ error }}
+		<p>Name: {{user.name}}</p>
+		<img ng-src="{{user.avatar_url}}" title="{{user.name}}" width="30"/>
+	</div>
+	
+-->
