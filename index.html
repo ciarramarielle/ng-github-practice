@@ -16,6 +16,7 @@
 	<!-- JS: links to my own CONTROLLER.js scripts -->
 	<!--<script type="text/javascript" src="script.js"></script>-->
 	<script type="text/javascript" src="MainController.js"></script>
+        <script type="text/javascript" src="github.js"></script>
 </head>
 
 <body ng-controller="MainController"><!-- ng-controller="MainController-->
@@ -32,7 +33,7 @@
 	<!--<div ng-include="'userDetails.html'" ng-show="user"></div>-->
 	
 	{{ countdown }}
-	<div ng-show="user"> 
+	<div ng-show="user" id="userDetails"> 
 		<h2>{{ user.name }}</h2>
 		<img ng-src="{{user.avatar_url}}" title="{{user.name}}" />
 		

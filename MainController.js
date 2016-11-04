@@ -6,19 +6,22 @@
 	var app = angular.module("AngularJSPractice", []);
 	
 	
-	var MainController = function($scope, $http, $interval, $log) {
+	var MainController = function($scope, github, $interval, $log, $anchorScroll, $location) {
 		
-		var onUserComplete = function(response) {
+		var onUserComplete = function(data) {
 			// gets executed if http request is successful
-			$scope.user = response.data;
+			$scope.user = data;
 			
 			// also want to get user.repos_url
-			$http.get($scope.user.repos_url)
-				.then(onRepos, onError);
+			github.getRepos($scope.user).then(onRepos, onError);
 		};
 		
-		var onRepos  = function(response) {
-			$scope.repos = response.data;
+		var onRepos  = function(data) {
+			$scope.repos = data;
+
+			// after loading user, we want to view userDetails div.
+			$location.hash("userDetails");
+			$anchorScroll();
 		};
 		
 		
@@ -36,8 +39,10 @@
 			//setInterval(doWork, timeBeforeEACHInvoke); = $interval
 		};
 		
+		var countdownInterval = null;
 		var startCountdown = function () {
-			$interval(decrementCountdown, 1000, $scope.countdown ); //5 = max iteration
+			countdownInterval = $interval(decrementCountdown, 1000, $scope.countdown ); //5 = max iteration
+
 		};
 		
 		
@@ -45,8 +50,13 @@
 		// this is invoked by ng-submit
 		$scope.search = function(username) {
 			$log.info("Searching for " + username);
-			$http.get("https://api.github.com/users/"+username)
-				.then(onUserComplete, onError); 
+			github.getUser(username).then(onUserComplete, onError);
+			//.get("https://api.github.com/users/"+username)
+			//	.then(onUserComplete, onError); 
+			if(countdownInterval) {
+				$interval.cancel(countdownInterval);
+				$scope.countdown = null;
+			}
 		};
 		
 		$scope.username = "ciarramarielle";
@@ -59,7 +69,7 @@
 
 	};
 	
-	app.controller("MainController", ["$scope", "$http", "$interval", "$log", MainController]);
+	app.controller("MainController", ["$scope", "github", "$interval", "$log", "$anchorScroll", "$location", MainController]);
 	//array to minify these later on
 	
 }());
