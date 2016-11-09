@@ -8,15 +8,26 @@
 <head>
 	<title>AngularJS Practice</title>
 
-	<!-- JS: link to AngularJS (local)-->
-	<script type="text/javascript" src="js\angular.min.js"></script>
 	<!-- JS: link to AngularJS CDN -->
-	<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>-->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 	
 	<!-- JS: links to my own CONTROLLER.js scripts -->
-	<!--<script type="text/javascript" src="script.js"></script>-->
 	<script type="text/javascript" src="MainController.js"></script>
         <script type="text/javascript" src="github.js"></script>
+
+        <!-- JS: jQuery, needed by BoostrapJS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<!-- CSS: Boostrap CSS CDN -->
+	<link rel="stylesheet" \ 
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  \
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" \ 
+	crossorigin="anonymous">
+
+	<!-- JS: Bootstrap JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" \
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+	crossorigin="anonymous"></script>
 </head>
 
 <body ng-controller="MainController"><!-- ng-controller="MainController-->
@@ -30,51 +41,7 @@
 
 	<p> {{error}} </p>
 	<!--Getting errors on Chrome/Firefox with ng-include without httpserver soo.. -->
-	<!--<div ng-include="'userDetails.html'" ng-show="user"></div>-->
+	<div ng-include="'userdetails.html'" ng-show="user"></div>
 	
-	{{ countdown }}
-	<div ng-show="user" id="userDetails"> 
-		<h2>{{ user.name }}</h2>
-		<img ng-src="{{user.avatar_url}}" title="{{user.name}}" />
-		
-		<!-- for user to select what they want to sort on -->
-		<br />
-		<select ng-model="repoSortOrder">
-			<option value="+name">Name</option>
-			<option value="-stargazers_count">Stars</option>
-			<option value="+language">Language</option>
-		</select>	
-	</div>
-
-	<table ng-show="user"> <!-- one row for each repo, each repo will have multiple data -->
-		<thead>
-			<th>Name</th>
-			<th>Stars</th>
-			<th>Language</th>
-		</thead>
-		<tbody><!-- one tr for each repo in $scope.repos -->
-			<tr ng-repeat="repo in repos | orderBy:repoSortOrder">
-				<td>{{ repo.name }}</td>
-				<td>{{ repo.stargazers_count | number }}</td>
-				<td>{{ repo.language }}</td>
-			</tr>
-		</tbody>
-	</table>
 </body>
-
-
 </html>
-
-
-<!--
-	<p>First name: {{person.firstName}}</p>
-	<p>Last name: {{person.lastName}}</p>
-	<img src="{{person.imageSrc}}" title="{{person.firstName}} {{person.lastName}}" alt = "{{person.firstName}} {{person.lastName}}" />
-
-		<div>
-		{{ error }}
-		<p>Name: {{user.name}}</p>
-		<img ng-src="{{user.avatar_url}}" title="{{user.name}}" width="30"/>
-	</div>
-	
--->
