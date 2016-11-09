@@ -12,8 +12,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 	
 	<!-- JS: links to my own CONTROLLER.js scripts -->
+	<script type="text/javascript" src="app.js"></script>
 	<script type="text/javascript" src="MainController.js"></script>
-        <script type="text/javascript" src="github.js"></script>
+	<script type="text/javascript" src="UserController.js"></script>
+	<script type="text/javascript" src="github.js"></script>
 
         <!-- JS: jQuery, needed by BoostrapJS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -28,20 +30,19 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" \
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
 	crossorigin="anonymous"></script>
+
+	<!-- JS: AngularJS angular-route -->
+	<script 
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-route.min.js"></script>
 </head>
 
-<body ng-controller="MainController"><!-- ng-controller="MainController-->
-	<h1>{{message}}</h1>
-
-	<form name="searchUser" ng-submit="search(username)">
-		<input required type="search" placeholder="Username to find..." ng-model="username"/>
-		<input type="submit" value="Search"  />
-		<!-- to require it, cant ng-click-->
-	</form>
-
-	<p> {{error}} </p>
-	<!--Getting errors on Chrome/Firefox with ng-include without httpserver soo.. -->
-	<div ng-include="'userdetails.html'" ng-show="user"></div>
+<body> 
+	<!-- SHELL VIEW -->
+	<h1>Github Viewer</h1>
+	<p>This header will appear on every page</p>
 	
+	<div ng-view></div> 
+	<!-- this is where routing engine will load the templates -->
 </body>
+
 </html>
