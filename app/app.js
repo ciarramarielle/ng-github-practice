@@ -10,11 +10,11 @@
 		$routeProvider
 			.when("/main", {
 				// when user @ /main,
-				templateUrl: "main.html",
+				templateUrl: "app\\components\\home\\main.html",
 				controller: "MainController"
 			})
 			.when("/user/:username", {
-				templateUrl: "user.html",
+				templateUrl: "app\\components\\user\\user.html",
 				controller: "UserController"
 			})
 			.otherwise({redirectTo:"/main"}); //if dont know this URL...

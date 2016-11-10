@@ -12,12 +12,12 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 	
 	<!-- JS: links to my own CONTROLLER.js scripts -->
-	<script type="text/javascript" src="app.js"></script>
-	<script type="text/javascript" src="MainController.js"></script>
-	<script type="text/javascript" src="UserController.js"></script>
-	<script type="text/javascript" src="github.js"></script>
+	<script type="text/javascript" src="app\app.js"></script>
+	<script type="text/javascript" src="app\components\home\MainController.js"></script>
+	<script type="text/javascript" src="app\components\user\UserController.js"></script>
+	<script type="text/javascript" src="app\services\github.js"></script>
 
-        <!-- JS: jQuery, needed by BoostrapJS -->
+    <!-- JS: jQuery, needed by BoostrapJS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 	<!-- CSS: Boostrap CSS CDN -->
@@ -38,9 +38,7 @@
 
 <body> 
 	<!-- SHELL VIEW -->
-	<h1>Github Viewer</h1>
-	<p>This header will appear on every page</p>
-	
+	<h1>Github Viewer</h1>	
 	<div ng-view></div> 
 	<!-- this is where routing engine will load the templates -->
 </body>
