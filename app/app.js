@@ -17,6 +17,10 @@
 				templateUrl: "app\\components\\user\\user.html",
 				controller: "UserController"
 			})
+			.when("/repo/:username/:reponame",{
+				templateUrl: "app\\components\\repo\\repo.html",
+				controller: "RepoController"
+			})
 			.otherwise({redirectTo:"/main"}); //if dont know this URL...
 
 			//.when = register route
